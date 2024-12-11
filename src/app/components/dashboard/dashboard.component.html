@@ -1,0 +1,19 @@
+<div class="dashboard-container">
+    <h2>Welcome Guys</h2>
+    
+    <div *ngIf="isAdmin" class="admin-section">
+      <h3>Admin Dashboard</h3>
+      <div class="action-buttons">
+        <button routerLink="/employees">Manage Employees</button>
+        <button routerLink="/reviews/create">Create Review</button>
+      </div>
+    </div>
+    <div>
+        <h2>Name :  {{ currentUser?.name || 'User' }}</h2>
+        <p *ngIf="currentUser">Email: {{ currentUser.email }}</p>
+        <p *ngIf="currentUser">Role: {{ currentUser.role }}</p>
+      </div>
+      
+  </div>
+  <button>vv</button>
+ 

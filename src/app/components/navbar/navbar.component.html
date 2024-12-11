@@ -1,0 +1,14 @@
+<nav class="navbar">
+    <div class="navbar-brand">Employee Management</div>
+    <div class="navbar-menu">
+      <ng-container *ngIf="authService.isAuthenticated()">
+        <a routerLink="/dashboard">Dashboard</a>
+        <a *ngIf="authService.isAdmin()" routerLink="/employees">Employees</a>
+        <a routerLink="/reviews">Reviews</a>
+        <a *ngIf="authService.isAdmin()" routerLink="/complete">Completed Reviews</a>
+
+        <button (click)="logout()">Logout</button>
+      </ng-container>
+    </div>
+  </nav>
+  

@@ -1,0 +1,21 @@
+<div class="review-list-container">
+    <h2>Performance Reviews</h2>
+    
+    <button *ngIf="isAdmin" routerLink="/reviews/create" class="create-button">
+      Create New Review
+    </button>
+  
+    <div class="reviews-grid">
+      <div *ngFor="let review of reviews" class="review-card">
+        <h3>Review for {{review.subject.name}}</h3>
+        <p>Reviewer: {{review.reviewer.name}}</p>
+        <p>Status: {{review.status}}</p>
+        <p>Created: {{review.createdAt | date}}</p>
+        <button *ngIf="review.status === 'pending' && isReviewer(review)" 
+          [routerLink]="['/reviews', review._id]">
+          Submit Feedback
+        </button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+<div class="employee-list-container">
+    <div class="form-section">
+      <h3>{{isEditing ? 'Edit Employee' : 'Add New Employee'}}</h3>
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" formControlName="name">
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" formControlName="email">
+        </div>
+        <div class="form-group" *ngIf="!isEditing">
+          <label>Password:</label>
+          <input type="password" formControlName="password">
+        </div>
+        <div class="button-group">
+          <button type="submit" [disabled]="employeeForm.invalid">
+            {{isEditing ? 'Update' : 'Add'}} Employee
+          </button>
+          <button type="button" *ngIf="isEditing" (click)="resetForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  
+    <div class="list-section">
+      <h3>Employee List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{employee.name}}</td>
+            <td>{{employee.email}}</td>
+            <td>
+              <button (click)="editEmployee(employee)">Edit</button>
+              <button (click)="deleteEmployee(employee._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,23 @@
+<div class="completed-reviews-container">
+    <h2>Completed Reviews</h2>
+    
+    <div class="reviews-grid">
+      <div *ngFor="let review of completedReviews" class="review-card">
+        <div class="review-header">
+          <h3>{{review.subject.name}}</h3>
+          <span class="rating">Rating: {{review.rating}}/5</span>
+        </div>
+        
+        <div class="review-details">
+          <p><strong>Reviewer:</strong> {{review.reviewer.name}}</p>
+          <p><strong>Submitted:</strong> {{review.updatedAt | date}}</p>
+        </div>
+        
+        <div class="feedback-section">
+          <h4>Feedback:</h4>
+          <p>{{review.feedback}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
